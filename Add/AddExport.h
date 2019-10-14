@@ -2,6 +2,7 @@
 #define __ADDEXPORT_H__
 
 #ifdef MYLIBDLL
+#undef MYLIBDLL 
 #define MYLIBDLL extern "C" _declspec(dllexport)
 #else
 #define MYLIBDLL extern "C" _declspec(dllimport)

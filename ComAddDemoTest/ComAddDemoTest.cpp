@@ -5,7 +5,7 @@
 #include <atlbase.h>
 #include <atlcom.h>
 #include <atlctl.h>
-#import "E:\\VC Codes\\VS2010\\OOPComTest\\ComAddDemo\\ComAddDemo\\Debug\\ComAddDemo.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "..\\ComAddDemo\\Debug\\ComAddDemo.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 
 int _tmain(int argc, _TCHAR* argv[])
 {
