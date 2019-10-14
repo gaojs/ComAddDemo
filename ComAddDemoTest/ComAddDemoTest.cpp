@@ -5,7 +5,8 @@
 #include <atlbase.h>
 #include <atlcom.h>
 #include <atlctl.h>
-#import "..\\ComAddDemo\\Debug\\ComAddDemo.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "..\\ComAddDemo\\Debug\\ComAddDemo.tlb" \
+	raw_interfaces_only, raw_native_types, no_namespace, named_guids
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -16,10 +17,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	CoInitialize(NULL);
 	CLSID clsid;
 	IISimAddObj* pProxy;
-	HRESULT hr = CLSIDFromProgID(OLESTR("ComAddDemo.SimAddObj"), &clsid);//这里的字符串一定要和注册表中的ProgID一致!!!   
-	hr = CoCreateInstance(clsid, NULL, CLSCTX_LOCAL_SERVER, IID_IISimAddObj, (void **)&pProxy); //创建COM对象
+	HRESULT hr = CLSIDFromProgID(OLESTR("ComAddDemo.SimAddObj"),
+		&clsid);//这里的字符串一定要和注册表中的ProgID一致!!!   
+	hr = CoCreateInstance(clsid, NULL, CLSCTX_LOCAL_SERVER,
+		IID_IISimAddObj, (void **)&pProxy); //创建COM对象
 	pProxy->Add(num1, num2, &sum); //调用COM接口
-	printf("%d + %d = %d", num1, num2, sum);
+	printf("%d + %d = %d\n", num1, num2, sum);
 
 	if (pProxy)
 	{
@@ -27,26 +30,22 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	pProxy = NULL;	
 
-	hr = CLSIDFromProgID(OLESTR("ComAddDemo.SimAddObj"), &clsid);//这里的字符串一定要和注册表中的ProgID一致!!!   
-	hr = CoCreateInstance(clsid, NULL, CLSCTX_LOCAL_SERVER, IID_IISimAddObj, (void **)&pProxy); //创建COM对象
+	hr = CLSIDFromProgID(OLESTR("ComAddDemo.SimAddObj"), 
+		&clsid);//这里的字符串一定要和注册表中的ProgID一致!!!   
+	hr = CoCreateInstance(clsid, NULL, CLSCTX_LOCAL_SERVER,
+		IID_IISimAddObj, (void **)&pProxy); //创建COM对象
 	pProxy->Add(num1, num2, &sum); //调用COM接口
-	printf("%d + %d = %d", num1, num2, sum);
-
-
+	printf("%d + %d = %d\n", num1, num2, sum);
 	num1 = 40;
 	num2 = 40;
 	pProxy->Add(num1, num2, &sum); //调用COM接口
-	printf("%d + %d = %d", num1, num2, sum);
-
+	printf("%d + %d = %d\n", num1, num2, sum);
 	if (pProxy)
 	{
 		pProxy->Release();
 	}
 	pProxy = NULL;	
-
-	CoUninitialize();
-
-	
+	CoUninitialize();	
 	return 0;
 }
 
