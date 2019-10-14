@@ -1,0 +1,37 @@
+// ComAddDemo.idl : IDL source for ComAddDemo
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ComAddDemo.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(9C3D29CF-6F29-4D8D-A3E5-8F45357B5472),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IISimAddObj : IDispatch{
+	[id(1)] HRESULT Add([in] LONG num1, LONG num2, [out,retval] LONG* sum);
+	[id(2)] HRESULT Test(void);
+	[id(3)] HRESULT TestVar([in] VARIANT va);
+};
+[
+	uuid(CAEDDE8F-50D3-4856-946A-6FAF2C177499),
+	version(1.0),
+]
+library ComAddDemoLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(10FBE3A8-ECAF-49FD-A6CC-90BBE66F9EFA)		
+	]
+	coclass ISimAddObj
+	{
+		[default] interface IISimAddObj;
+	};
+};
+

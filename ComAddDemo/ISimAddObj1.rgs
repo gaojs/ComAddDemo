@@ -1,0 +1,26 @@
+HKCR
+{
+	ComAddDemo.SimAddObj.1 = s 'ISimAddObj1 Class'
+	{
+		CLSID = s '{7635BE90-5986-4C40-BC74-010794D9250D}'
+	}
+	ComAddDemo.SimAddObj = s 'ISimAddObj1 Class'
+	{		
+		CurVer = s 'ComAddDemo.SimAddObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {7635BE90-5986-4C40-BC74-010794D9250D} = s 'ISimAddObj1 Class'
+		{
+			ProgID = s 'ComAddDemo.SimAddObj.1'
+			VersionIndependentProgID = s 'ComAddDemo.SimAddObj'
+			ForceRemove Programmable
+			LocalServer32 = s '%MODULE%'
+			{
+				val ServerExecutable = s '%MODULE_RAW%'
+			}
+			TypeLib = s '{CAEDDE8F-50D3-4856-946A-6FAF2C177499}'
+			Version = s '1.0'
+		}
+	}
+}
